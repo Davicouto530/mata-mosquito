@@ -1,33 +1,57 @@
-//Iniciando as variáveis fora da função
+// Iniciando as variáveis para armazenar a altura e a largura da tela
 let altura = 0
 let largura = 0
 
-//Função para redimensionar o tamanho da tela
+// Função para atualizar o tamanho da tela do jogo
 function ajustaTamanhoPalcoJogo() {
-    altura = window.innerHeight //recupera a altura da tela
-    largura = window.innerWidth //recupera a largura da tela
+    altura = window.innerHeight // Pega a altura da tela visível
+    largura = window.innerWidth // Pega a largura da tela visível
 
-    console.log(largura, altura)
-    //Exibe no console o novo tamanho da tela quando redimensiona 
+    console.log(largura, altura) // Exibe os valores no console para conferência
 }
 
-//Chamando a função
+// Chamando a função para definir os valores iniciais da tela
 ajustaTamanhoPalcoJogo()
 
 function posicaoRandomica() {
-    //Gerando números aleatórios e multiplicando ele pela largura e altura, e arredondando para um número inteiro
-    let posicaoX = Math.floor(Math.random() * largura)
-    let posicaoY = Math.floor(Math.random() * altura)
+    // Gera posições aleatórias dentro dos limites da tela e evita que a imagem saia da área visível
+    let posicaoX = Math.floor(Math.random() * largura) - 90
+    let posicaoY = Math.floor(Math.random() * altura) - 90
 
-    console.log(posicaoX, posicaoY)
+    // Operador ternário, se a posição calculada for menor que 0, ajusta para 0 para não sair da tela
+    posicaoX = posicaoX < 0 ? 0 : posicaoX
+    posicaoY = posicaoY < 0 ? 0 : posicaoY
 
-    //Criar o elemento HTML
-    let mosquito = document.createElement('img')//Criando uma tag <img> dentro do HTML e colocando na variável "mosquito"
-    mosquito.src = 'imagens/mosca.png'//Adicionando a imagem que vai dentro da tag <img>
+    console.log(posicaoX, posicaoY) // Exibe as posições no console
 
-    document.body.appendChild(mosquito)//Implementando no "body" do HTML o que está dentro da variável "mosquito", que é uma tag <img>
+    // Criando um novo elemento <img> no HTML
+    let mosquito = document.createElement('img') // Cria uma tag <img>
+    mosquito.src = 'imagens/mosca.png' // Define a imagem do mosquito
+    mosquito.className = tamanhoAleatorio() // Aplica uma classe CSS para estilizar o mosquito
+
+    // Define a posição do mosquito na tela
+    mosquito.style.left = posicaoX + 'px'
+    mosquito.style.top = posicaoY + 'px'
+    mosquito.style.position = 'absolute' // Permite que o mosquito seja posicionado livremente
+
+    // Adiciona o mosquito na página dentro do <body>
+    document.body.appendChild(mosquito)
+
 }
 
+// Função para definir um tamanho aleatório para o mosquito
+function tamanhoAleatorio() {
+    
+    let classe = Math.floor(Math.random() * 3) // Gera um número aleatório entre 0 e 2
 
-
+    // Escolhe uma classe CSS diferente dependendo do número gerado
+    switch(classe) {
+        case 0:
+            return 'mosquito1' // Se o número for 0, retorna a classe 'mosquito1'
+        case 1:
+            return 'mosquito2' // Se for 1, retorna a classe 'mosquito2'
+        case 2:
+            return 'mosquito3' // Se for 2, retorna a classe 'mosquito3'
+    }
+}
 
