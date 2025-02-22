@@ -27,7 +27,7 @@ function posicaoRandomica() {
     // Criando um novo elemento <img> no HTML
     let mosquito = document.createElement('img') // Cria uma tag <img>
     mosquito.src = 'imagens/mosca.png' // Define a imagem do mosquito
-    mosquito.className = tamanhoAleatorio() // Aplica uma classe CSS para estilizar o mosquito
+    mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio() // Aplica uma classe CSS para estilizar o mosquito
 
     // Define a posição do mosquito na tela
     mosquito.style.left = posicaoX + 'px'
@@ -52,6 +52,19 @@ function tamanhoAleatorio() {
             return 'mosquito2' // Se for 1, retorna a classe 'mosquito2'
         case 2:
             return 'mosquito3' // Se for 2, retorna a classe 'mosquito3'
+    }
+}
+
+//Função para fazer o mosquito olhar para direita e esquerda aleatoriamente
+function ladoAleatorio(){
+    let classe = Math.floor(Math.random() * 2) // Gera um número aleatório entre 0 e 1
+
+    // Escolhe uma classe CSS diferente dependendo do número gerado
+    switch(classe) {
+        case 0:
+            return 'ladoA' // Se o número for 0, retorna a classe 'ladoA'
+        case 1:
+            return 'ladoB' // Se for 1, retorna a classe 'ladoB'
     }
 }
 
