@@ -9,9 +9,31 @@
 <!-- O "onresize=""" serve para que a função ajustaTamanhoPalcoJogo() será chamada, ajustando os valores de altura e largura para corresponderem ao novo tamanho da tela -->
 <body onresize="ajustaTamanhoPalcoJogo()">
 
+    <div class="painel"><!--Criar o painel de tempo-->
+        <div class="vidas"><!--Criar os corações com as vidas-->
+            <img id="v1" src="imagens/coracao_cheio.png" alt="">
+
+            <img id="v2" src="imagens/coracao_cheio.png" alt="">
+
+            <img id="v3" src="imagens/coracao_cheio.png" alt="">
+        </div>
+
+        <div class="cronometro"><!--Criar o cronometro de quanto tempo falta-->
+            Tempo restante
+
+            <span id="cronometro"></span>
+        </div>
+    </div>
+
     <script src="jogo.js"></script>
+
     <script>
-        posicaoRandomica()
+        document.getElementById('cronometro').innerHTML = tempo
+
+        //Fazendo aparecer mosquitos na tela a cada 1segundo, um em cima do outro, no JS vai remover o anterior, e aqui fazer aparecer o outro, e vai ficar nesse ciclo.
+        let criaMosquito = setInterval(function(){
+            posicaoRandomica()
+        }, 1000)
     </script>
 </body>
 </html>
