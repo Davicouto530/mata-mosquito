@@ -6,7 +6,26 @@ let largura = 0
 let vidas = 1
 
 //Variável para o cronometro do jogo, falando quanto tempo de jogo que é
-let tempo = 10
+let tempo = 50
+
+//Variável para mudar o tempo de acordo com a dificuldade
+let criaMosquitoTempo = 1500
+
+//Variável para recuperar a dificuldade passada após o "?" na url da página "index"
+let nivel = window.location.search
+nivel = nivel.replace('?', '')//Tirando o "?" quando for pra variável "nivel"
+
+//Verificando o nivel escolhido
+if(nivel === 'normal'){
+    //Ajusta o tempo para mais devegar: 1,5 segundos
+    criaMosquitoTempo = 1500
+}else if(nivel === 'dificil'){
+    //Ajusta o tempo para dificil: 1 segundo
+    criaMosquitoTempo = 1000
+}else if(nivel === 'chucknorris'){
+    //Ajusta o tempo para mais rápido: 750 milisegundos
+    criaMosquitoTempo = 750
+}
 
 // Função para atualizar o tamanho da tela do jogo
 function ajustaTamanhoPalcoJogo() {

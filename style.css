@@ -7,6 +7,10 @@
     overflow: hidden;
 }
 
+html {
+    cursor: url(imagens/mata_mosca.png) 30 30, auto;
+}
+
 body {
     height: 100vh;
     width: 100vw;
